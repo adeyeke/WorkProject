@@ -1,0 +1,980 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dado.Validators</name>
+    </assembly>
+    <members>
+        <member name="M:Dado.StringExtensions.Prepend(System.String,System.String,System.String[])">
+            <summary>
+            	Prepend new a string with a delimiter when the current string isn't Null or Empty.
+            </summary>
+            <param name="s"></param>
+            <param name="delimiter"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Dado.StringExtensions.Prepend(System.String,System.String,System.Boolean,System.String[])">
+            <summary>
+            	Prepend new a string with a delimiter when the current string isn't Null or Empty.
+            </summary>
+            <param name="s"></param>
+            <param name="delimiter"></param>
+            <param name="text"></param>
+            <param name="ignoreNullOrEmpty"></param>
+        </member>
+        <member name="M:Dado.StringExtensions.Append(System.String,System.String,System.String[])">
+            <summary>
+            	Append new a string with a delimiter when the current string isn't Null or Empty.
+            </summary>
+            <param name="s"></param>
+            <param name="delimiter"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Dado.StringExtensions.Append(System.String,System.String,System.Boolean,System.String[])">
+            <summary>
+            	Append new a string with a delimiter when the current string isn't Null or Empty.
+            </summary>
+            <param name="s"></param>
+            <param name="delimiter"></param>
+            <param name="text"></param>
+            <param name="ignoreNullOrEmpty"></param>
+        </member>
+        <member name="M:Dado.StringExtensions.PrependProcessor(System.String,System.String,System.Boolean,System.String[])">
+            <summary>
+            	Prepend new a string with a delimiter when the current string isn't Null or Empty.
+            </summary>
+            <param name="delimiter"></param>
+            <param name="currentString"></param>
+            <param name="ignoreNullOrEmpty"></param>
+            <param name="newStrings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.StringExtensions.AppendProcessor(System.String,System.String,System.Boolean,System.String[])">
+            <summary>
+            	Append new a string with a delimiter when the current string isn't Null or Empty.
+            </summary>
+            <param name="delimiter"></param>
+            <param name="currentString"></param>
+            <param name="ignoreNullOrEmpty"></param>
+            <param name="newStrings"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Dado.Validators.BaseValidator">
+            <summary>
+            	The Base for all Dado Validators
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.BaseValidator.#ctor">
+            <summary>
+            	Initializes a new instance of the BaseValidator class.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.BaseValidator.OnPreRender(System.EventArgs)">
+            <summary>
+            	Checks the client brower and configures the validator for compatibility prior to rendering.
+            </summary>
+            <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Dado.Validators.BaseValidator.Render(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Displays the control on the client.
+            </summary>
+            <param name="writer">A <see cref="T:System.Web.UI.HtmlTextWriter"/> that contains the output stream for rendering on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.BaseValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the HTML attributes and styles that need to be rendered for the control to the specified <see cref="T:System.Web.UI.HtmlTextWriter"/> object.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.BaseValidator.AddExpandoAttribute(System.Web.UI.HtmlTextWriter,System.String,System.String,System.String)">
+            <summary>
+            	Adds an attribute to be rendered for clientside validation.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+            <param name="controlId">The <see cref="T:System.Web.UI.Control"/> on the page that contains the custom attribute.</param>
+            <param name="attributeName">The name of the custom attribute to register.</param>
+            <param name="attributeValue">The value of the custom attribute.</param>
+        </member>
+        <member name="M:Dado.Validators.BaseValidator.AddExpandoAttribute(System.Web.UI.HtmlTextWriter,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            	Adds an attribute to be rendered for clientside validation.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+            <param name="controlId">The <see cref="T:System.Web.UI.Control"/> on the page that contains the custom attribute.</param>
+            <param name="attributeName">The name of the custom attribute to register.</param>
+            <param name="attributeValue">The value of the custom attribute.</param>
+            <param name="encode">A Boolean value indicating whether to encode the custom attribute to register.</param>
+        </member>
+        <member name="M:Dado.Validators.BaseValidator.AddExpandoAttribute(System.Web.UI.Control,System.Web.UI.HtmlTextWriter,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            	Adds an attribute to be rendered for clientside validation.
+            </summary>
+            <param name="control">The <see cref="T:System.Web.UI.Control"/> with the containing invocable member.</param>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+            <param name="controlId">The <see cref="T:System.Web.UI.Control"/> on the page that contains the custom attribute.</param>
+            <param name="attributeName">The name of the custom attribute to register.</param>
+            <param name="attributeValue">The value of the custom attribute.</param>
+            <param name="encode">A Boolean value indicating whether to encode the custom attribute to register.</param>
+        </member>
+        <member name="M:Dado.Validators.BaseValidator.IsPartialRenderingSupported(System.Web.UI.Page)">
+            <summary>
+            	Determine whether partial rendering is supported.
+            </summary>
+            <param name="page"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Dado.Validators.BaseValidator.CssClass">
+            <summary>
+            	Gets or sets the CSS class rendered by the Web control.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.BaseValidator.CssClassInvalid">
+            <summary>
+            	Gets or sets the CSS class rendered by the Web control when it is not valid.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.BaseValidator.ErrorMessage">
+            <summary>
+            	Gets or sets the text for the error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.BaseValidator.EnableClientScript">
+            <summary>
+            	Gets or sets a value indicating whether client-side validation is enabled.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.BaseValidator.ForeColor">
+            <summary>
+            	Gets or sets the text color of validation messages.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.BaseValidator.EnableLegacyRendering">
+            <summary>
+            	Is "XHTML 1.0 Transitional" rendering allowed?
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.BaseValidator.DefaultErrorMessage">
+            <summary>
+            	Gets or sets the text for the default error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.BaseValidator.WebFormScriptReference">
+            <summary>
+            	Gets or sets the text for the reference to the form's script namespace.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.BaseCompareValidator">
+            <summary>
+            	Serves as the abstract base class for validation controls that perform typed comparisons.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.CanConvert(System.String,System.Web.UI.WebControls.ValidationDataType)">
+            <summary>
+            	Determines whether the specified string can be converted to the specified data type. This version of the overloaded method tests currency, double, and date values using the format used by the current culture.
+            </summary>
+            <param name="text">The string to test.</param>
+            <param name="type">One of the <see cref="T:System.Web.UI.WebControls.ValidationDataType"/> values.</param>
+            <returns>true if the specified data string can be converted to the specified data type; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.CanConvert(System.String,System.Web.UI.WebControls.ValidationDataType,System.Boolean)">
+            <summary>
+            	Determines whether the specified string can be converted to the specified data type. This version of the overloaded method allows you to specify whether values are tested using a culture-neutral format.
+            </summary>
+            <param name="text">The string to test.</param>
+            <param name="type">One of the <see cref="T:System.Web.UI.WebControls.ValidationDataType"/> enumeration values.</param>
+            <param name="cultureInvariant">true to test values using a culture-neutral format; otherwise, false.</param>
+            <returns>true if the specified data string can be converted to the specified data type; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the HTML attributes and styles that need to be rendered for the control to the specified <see cref="T:System.Web.UI.HtmlTextWriter"/> object.
+            </summary>
+            <param name="writer">A <see cref="T:System.Web.UI.HtmlTextWriter"/> that contains the output stream for rendering on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.GetDateElementOrder">
+            <summary>
+            	Determines the order in which the month, day, and year appear in a date value for the current culture.
+            </summary>
+            <returns>A string that represents the order in which the month, day, and year appear in a date value for the current culture.</returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.GetFullYear(System.Int32)">
+            <summary>
+            	Generates the four-digit year representation of the specified two-digit year.
+            </summary>
+            <param name="shortYear">A two-digit year.</param>
+            <returns>The four-digit year representation of the specified two-digit year.</returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.Convert(System.String,System.Web.UI.WebControls.ValidationDataType,System.Object@)">
+            <summary>
+            	Try to convert the test into the validation data type
+            </summary>
+            <param name="text"></param>
+            <param name="type"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.Convert(System.String,System.Web.UI.WebControls.ValidationDataType,System.Boolean,System.Object@)">
+            <summary>
+            	Try to convert the test into the validation data type
+            </summary>
+            <param name="text"></param>
+            <param name="type"></param>
+            <param name="cultureInvariant"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.Compare(System.String,System.String,System.Web.UI.WebControls.ValidationCompareOperator,System.Web.UI.WebControls.ValidationDataType)">
+            <summary>
+            	Compare two strings using the type and operator
+            </summary>
+            <param name="leftText"></param>
+            <param name="rightText"></param>
+            <param name="op"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.Compare(System.String,System.Boolean,System.String,System.Boolean,System.Web.UI.WebControls.ValidationCompareOperator,System.Web.UI.WebControls.ValidationDataType)">
+            <summary>
+            	Compare two strings using the type and operator
+            </summary>
+            <param name="leftText"></param>
+            <param name="cultureInvariantLeftText"></param>
+            <param name="rightText"></param>
+            <param name="cultureInvariantRightText"></param>
+            <param name="op"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.DetermineRenderUplevel">
+            <summary>
+            	Determines whether the validation control can perform client-side validation.
+            </summary>
+            <returns>true if the validation control can perform client-side validation; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.ConvertToShortDateString(System.String)">
+            <summary>
+            	Convert a short date to a string
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.IsInStandardDateFormat(System.String)">
+            <summary>
+            	Check if a string is in a standard data format.
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.ConvertCultureInvariantToCurrentCultureFormat(System.String,System.Web.UI.WebControls.ValidationDataType)">
+            <summary>
+            	Converts a culture invariant to a current culture format.
+            </summary>
+            <param name="valueInString"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.GetCurrencyGroupSize(System.Globalization.NumberFormatInfo)">
+            <summary>
+            	VSWhidbey 83165
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.ConvertCurrency(System.String,System.Globalization.NumberFormatInfo)">
+             <summary>
+            
+             </summary>
+             <param name="text"></param>
+             <param name="info"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.ConvertDouble(System.String,System.Globalization.NumberFormatInfo)">
+             <summary>
+            
+             </summary>
+             <param name="text"></param>
+             <param name="info"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.BaseCompareValidator.ConvertDate(System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="text"></param>
+             <param name="dateElementOrder"></param>
+             <returns></returns>
+             <remarks>When updating the regular expressions in this method, you must also update the regular expressions in WebUIValidation.js::ValidatorConvert().  The server and client regular expressions must match.</remarks>
+        </member>
+        <member name="P:Dado.Validators.BaseCompareValidator.Type">
+            <summary>
+            	Gets or sets the data type that the values being compared are converted to before the comparison is made.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.BaseCompareValidator.CultureInvariantValues">
+            <summary>
+            	Gets or sets a value indicating whether values are converted to a culture-neutral format before being compared.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.BaseCompareValidator.CutoffYear">
+            <summary>
+            	Gets the maximum year that can be represented by a two-digit year.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.CompareValidator">
+            <summary>
+            	Compares the value entered by the user in an input control with the value entered in another input control, or with a constant value.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.CompareValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the HTML attributes and styles that need to be rendered for the control to the specified <see cref="T:System.Web.UI.HtmlTextWriter"/> object.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.CompareValidator.ControlPropertiesValid">
+            <summary>
+            	Checks the properties of a the control for valid values.
+            </summary>
+            <returns>true if the control properties are valid; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.CompareValidator.EvaluateIsValid">
+            <summary>
+            	When overridden in a derived class, this method contains the code to determine whether the value in the input control is valid.
+            </summary>
+            <returns>true if the value in the input control is valid; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.CompareValidator.EqualsIgnoreCase(System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="s1"></param>
+             <param name="s2"></param>
+             <returns></returns>
+        </member>
+        <member name="P:Dado.Validators.CompareValidator.ControlToCompare">
+            <summary>
+            	Gets or sets the ID of the input control to compare with.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.CompareValidator.Operator">
+            <summary>
+            	Gets or sets the comparison operation to perform.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.CompareValidator.ValueToCompare">
+            <summary>
+            	Gets or sets the specific value to compare with.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.ValidationType">
+            <summary>
+            	The types available for validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.Boolean">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.Byte">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.Char">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.Decimal">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.Double">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.Int16">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.Int32">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.Int64">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.SByte">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationType.Single">
+            <summary>
+            	Provides server-side and client-side validation.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.TypeValidator">
+            <summary>
+            	Checks if the value of the associated input control has an acceptable type.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.TypeValidator.#ctor">
+            <summary>
+            	Initializes a new instance of the TypeValidator class.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.TypeValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the HTML attributes and styles that need to be rendered for the control to the specified <see cref="T:System.Web.UI.HtmlTextWriter"/> object.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.TypeValidator.EvaluateIsValid">
+            <summary>
+            	Called during the validation stage when ASP.NET processes a Web Form.
+            </summary>
+            <returns>true if the value in the input control is valid; otherwise, false.</returns>
+        </member>
+        <member name="P:Dado.Validators.TypeValidator.ErrorMessage">
+            <summary>
+            	Gets or sets the text for the error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.TypeValidator.Type">
+            <summary>
+            	Gets or sets the data type that the values are validated against.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.TypeValidator.ValidateEmptyText">
+            <summary>
+            	Gets or sets a Boolean value indicating whether empty text should be validated.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.CustomValidator">
+            <summary>
+            	Allows custom code to perform validation on the client and/or server.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.CustomValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the properties of the <see cref="T:Dado.Validators.CustomValidator"/> control to the output stream for rendering on the client.
+            </summary>
+            <param name="writer">A <see cref="T:System.Web.UI.HtmlTextWriter"/> that contains the output stream for rendering on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.CustomValidator.ControlPropertiesValid">
+            <summary>
+            	Checks the properties of the control for valid values.
+            </summary>
+            <returns>true if the control properties are valid; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.CustomValidator.EvaluateIsValid">
+            <summary>
+            	Called during the validation stage when ASP.NET processes a Web Form.
+            </summary>
+            <returns>true if the value in the input control is valid; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.CustomValidator.OnServerValidate(System.String)">
+            <summary>
+            	Raises the <see langword="ServerValidate"/> event for the <see cref="T:System.Web.UI.WebControls.CustomValidator"/>.
+            </summary>
+            <param name="value">The value to validate. </param>
+            <returns>true if the value specified by the value parameter passes validation; otherwise, false.</returns>
+        </member>
+        <member name="P:Dado.Validators.CustomValidator.ClientValidationFunction">
+            <summary>
+            	Gets and sets the custom client Javascript function used for validation.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.CustomValidator.ValidateEmptyText">
+            <summary>
+            	Gets or sets a Boolean value indicating whether empty text should be validated.
+            </summary>
+        </member>
+        <member name="E:Dado.Validators.CustomValidator.ServerValidate">
+            <summary>
+            	Represents the method that will handle the <see langword="ServerValidate"/> event of a <see cref="T:Dado.Validators.CustomValidator"/>.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.EmailValidator">
+            <summary>
+            	Checks if the value of the associated input control is a valid email address.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.RegularExpressionValidator">
+            <summary>
+            	Checks if the value of the associated input control matches the pattern of a regular expression.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.RegularExpressionValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the HTML attributes and styles that need to be rendered for the control to the specified <see cref="T:System.Web.UI.HtmlTextWriter"/> object.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.RegularExpressionValidator.EvaluateIsValid">
+            <summary>
+            	Determines whether the content in the input control is valid.
+            </summary>
+            <returns>true if the control is valid; otherwise, false.</returns>
+        </member>
+        <member name="P:Dado.Validators.RegularExpressionValidator.ValidationExpression">
+            <summary>
+            	Indicates the regular expression assigned to be the validation criteria.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.RegularExpressionValidator.IgnoreCase">
+            <summary>
+            	Gets or sets the data type that the values are validated against.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.EmailValidator.#ctor">
+            <summary>
+            	Initializes a new instance of the EmailValidator class.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.EmailValidator.ErrorMessage">
+            <summary>
+            	Gets or sets the text for the error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.EmailValidator.ValidationExpression">
+            <summary>
+            	Indicates the regular expression assigned to be the validation criteria.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.ValidationFileTypeOperator">
+            <summary>
+            	The validation modes available to the <see cref="T:Dado.Validators.FileTypeValidator"/>.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationFileTypeOperator.Positive">
+            <summary>
+            	Validation verifies file's extension is one of the provided <see cref="P:Dado.Validators.FileTypeValidator.FileExtensions"/>.
+            </summary>
+        </member>
+        <member name="F:Dado.Validators.ValidationFileTypeOperator.Negative">
+            <summary>
+            	Validation verifies file's extension is not one of the provided <see cref="P:Dado.Validators.FileTypeValidator.FileExtensions"/>.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.FileTypeValidator">
+            <summary>
+            	Checks if the value of the associated input control has an acceptable file extension.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.FileTypeValidator.OnPreRender(System.EventArgs)">
+            <summary>
+            	Checks the client brower and configures the validator for compatibility prior to rendering.
+            </summary>
+            <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Dado.Validators.FileTypeValidator.ProcessFileExtensions">
+            <summary>
+            	Process ValidTypes for insertion into ValidationExpression.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.FileTypeValidator.ProcessErrorMessage">
+            <summary>
+            	Process ValidTypes for insertion into ErrorMessage.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Dado.Validators.FileTypeValidator.FileExtensions">
+            <summary>
+            	Indicates a comma delimited list of case-insensitive file extensions.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.FileTypeValidator.Operator">
+            <summary>
+            	Gets or sets the comparison operation to perform.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.FileTypeValidator.ErrorMessage">
+            <summary>
+            	Gets or sets the text for the error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.FileTypeValidator.ValidationExpression">
+            <summary>
+            	Indicates the regular expression assigned to be the validation criteria.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.FileTypeValidator.IgnoreCase">
+            <summary>
+            	Gets or sets the data type that the values are validated against.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.FileTypeValidator.DefaultErrorMessage">
+            <summary>
+            	Gets or sets the text for the default error message.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.ImageValidator">
+            <summary>
+            	Checks if the value of the associated input control meets exact, minimum, and maximum height and width constraints.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.ImageValidator.#ctor">
+            <summary>
+            	Initializes a new instance of the BaseValidator class.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.ImageValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the HTML attributes and styles that need to be rendered for the control to the specified <see cref="T:System.Web.UI.HtmlTextWriter"/> object.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.ImageValidator.EvaluateIsValid">
+            <summary>
+            	Called during the validation stage when ASP.NET processes a Web Form.
+            </summary>
+            <returns>true if the value in the input control is valid; otherwise, false.</returns>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.ErrorMessage">
+            <summary>
+            	Make ErrorMessage private because there aren't generic ErrorMessages
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.EnableClientScript">
+            <summary>
+            	Make EnableClientScript private because currently client-side validation isn't supported.
+            	Gets or sets a value indicating whether client-side validation is enabled.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.ExactWidth">
+            <summary>
+            	Indicates the exact width of the image in the control.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.ExactWidthErrorMessage">
+            <summary>
+            	Message to display when ExactWidth is surpassed.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.MinimumWidth">
+            <summary>
+            	Indicates the minimum width of the image of the control.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.MinimumWidthErrorMessage">
+            <summary>
+            	Message to display when MinimumWidth is surpassed.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.MaximumWidth">
+            <summary>
+            	Indicates the maximum width of the image in the control.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.MaximumWidthErrorMessage">
+            <summary>
+            	Message to display when MaximumWidth is surpassed.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.ExactHeight">
+            <summary>
+            	Indicates the exact height of the image in the control.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.ExactHeightErrorMessage">
+            <summary>
+            	Message to display when ExactHeight is surpassed.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.MinimumHeight">
+            <summary>
+            	Indicates the minimum height of the image of the control.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.MinimumHeightErrorMessage">
+            <summary>
+            	Message to display when MinimumHeight is surpassed.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.MaximumHeight">
+            <summary>
+            	Indicates the maximum height of the image in the control.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ImageValidator.MaximumHeightErrorMessage">
+            <summary>
+            	Message to display when MaximumHeight is surpassed.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.LengthValidator">
+            <summary>
+            	Checks if the value of the associated input control meets minimum, and maximum text length constraints.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.LengthValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the HTML attributes and styles that need to be rendered for the control to the specified <see cref="T:System.Web.UI.HtmlTextWriter"/> object.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.LengthValidator.EvaluateIsValid">
+            <summary>
+            	Called during the validation stage when ASP.NET processes a Web Form.
+            </summary>
+            <returns>true if the value in the input control is valid; otherwise, false.</returns>
+        </member>
+        <member name="P:Dado.Validators.LengthValidator.ErrorMessage">
+            <summary>
+            	Make ErrorMessage private because there aren't generic ErrorMessages
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.LengthValidator.MinimumLength">
+            <summary>
+            	Indicates the maximum text length for the control value.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.LengthValidator.MinimumLengthErrorMessage">
+            <summary>
+            	Message to display when MinimumLength is surpassed.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.LengthValidator.MaximumLength">
+            <summary>
+            	Indicates the maximum text length for the control value.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.LengthValidator.MaximumLengthErrorMessage">
+            <summary>
+            	Message to display when MaximumLength is surpassed.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.PhoneValidator">
+            <summary>
+            	Checks if the value of the associated input control is a valid phone number.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.PhoneValidator.#ctor">
+            <summary>
+            	Initializes a new instance of the PhoneValidator class.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.PhoneValidator.BuildExtentionRegex">
+            <summary>
+            	Registers the validator on the page.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.PhoneValidator.ErrorMessage">
+            <summary>
+            	Gets or sets the text for the error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.PhoneValidator.AllowExtension">
+            <summary>
+            	Deterimes whether phone extension should be included in validation.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.PhoneValidator.ExtensionPrefixes">
+            <summary>
+            	Indicates a comma delimited list of extension prefixes.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.PhoneValidator.MaximumExtensionLength">
+            <summary>
+            	Deterimes the maximum length of a valid phone extension.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.PhoneValidator.ValidationExpression">
+            <summary>
+            	Indicates the regular expression assigned to be the validation criteria.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.PhoneValidator.ValidatedPhoneNumber">
+            <summary>
+            	Gets the validated value as a proper phone number.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.PhoneValidator.ValidatedExtension">
+            <summary>
+            	Gets the validated value as a proper phone extension.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.RangeValidator">
+            <summary>
+            	Checks if the value of the associated input control is within some minimum and maximum values, which can be constant values or values of other controls.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.RangeValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the HTML attributes and styles that need to be rendered for the control to the specified <see cref="T:System.Web.UI.HtmlTextWriter"/> object.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.RangeValidator.ControlPropertiesValid">
+            <summary>
+            	This is a check of properties to determine any errors made by the developer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Dado.Validators.RangeValidator.EvaluateIsValid">
+            <summary>
+            	Determines whether the content in the input control is valid.
+            </summary>
+            <returns>true if the control is valid; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.RangeValidator.ValidateValues">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Dado.Validators.RangeValidator.MaximumValue">
+            <summary>
+            	Gets or sets the maximum value of the validation range.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.RangeValidator.MinimumValue">
+            <summary>
+            	Gets or sets the minimum value of the validation range.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.RequiredFieldValidator">
+            <summary>
+            	Makes the associated input control a required field.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.RequiredFieldValidator.OnInit(System.EventArgs)">
+            <summary>
+            	Registers the validator on the page.
+            </summary>
+            <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Dado.Validators.RequiredFieldValidator.ControlPropertiesValid">
+            <summary>
+            	Determines whether the control specified by the ControlToValidate property is a valid control.
+            </summary>
+            <returns>true if the control specified by ControlToValidate is a valid control; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.RequiredFieldValidator.CheckControlValidationProperty(System.String,System.String)">
+            <summary>
+            	Verifies whether the specified control is on the page and contains validation properties.
+            </summary>
+            <param name="name">The control to verify.</param>
+            <param name="propertyName">Additional text to describe the source of the exception, if an exception is thrown from using this method.</param>
+        </member>
+        <member name="M:Dado.Validators.RequiredFieldValidator.AddAttributesToRender(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            	Adds the HTML attributes and styles that need to be rendered for the control to the specified <see cref="T:System.Web.UI.HtmlTextWriter"/> object.
+            </summary>
+            <param name="writer">An <see cref="T:System.Web.UI.HtmlTextWriter"/> that represents the output stream to render HTML content on the client.</param>
+        </member>
+        <member name="M:Dado.Validators.RequiredFieldValidator.EvaluateIsValid">
+            <summary>
+            	Called during the validation stage when ASP.NET processes a Web Form.
+            </summary>
+            <returns>true if the value in the input control is valid; otherwise, false.</returns>
+        </member>
+        <member name="P:Dado.Validators.RequiredFieldValidator.ErrorMessage">
+            <summary>
+            	Gets or sets the text for the error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.RequiredFieldValidator.InitialValue">
+            <summary>
+            	Gets or sets the initial value of the associated input control.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.TimeValidator">
+            <summary>
+            	Checks if the value of the associated input control is in a valid time format. ie: HH:mm, h:mm tt, h:mmtt, h:mm, hh:mm tt, hh:mmtt, hh:mm
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.TimeValidator.#ctor">
+            <summary>
+            	Initializes a new instance of the TimeValidator class.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.TimeValidator.ValidatedValue">
+            <summary>
+            	Returns the validated value as a TimeSpan
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Dado.Validators.TimeValidator.ErrorMessage">
+            <summary>
+            	Gets or sets the text for the error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.TimeValidator.ValidationExpression">
+            <summary>
+            	Indicates the regular expression assigned to be the validation criteria.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.UriValidator">
+            <summary>
+            	Checks if the value of the associated input control is a valid uri.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.UriValidator.#ctor">
+            <summary>
+            	Initializes a new instance of the UriValidator class.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.UriValidator.EvaluateIsValid">
+            <summary>
+            	Called during the validation stage when ASP.NET processes a Web Form.
+            </summary>
+            <returns>true if the value in the input control is valid; otherwise, false.</returns>
+        </member>
+        <member name="M:Dado.Validators.UriValidator.SetControlValidationValue(System.String,System.String)">
+            <summary>
+            	Sets the validation value of the control named relative to the validator.
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:Dado.Validators.UriValidator.ErrorMessage">
+            <summary>
+            	Gets or sets the text for the error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.UriValidator.Kind">
+            <summary>
+            	Gets or sets the UriKind the values are validated against.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.UriValidator.TryToFix">
+            <summary>
+            	Deterimes whether URI should try to be fixed during validation.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.UriValidator.EnableClientScript">
+            <summary>
+            	Gets or sets a value indicating whether client-side validation is enabled.
+            </summary>
+        </member>
+        <member name="T:Dado.Validators.ZipCodeValidator">
+            <summary>
+            	Checks if the value of the associated input control is a valid zip code.
+            </summary>
+        </member>
+        <member name="M:Dado.Validators.ZipCodeValidator.#ctor">
+            <summary>
+            	Initializes a new instance of the ZipCodeValidator class.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ZipCodeValidator.ErrorMessage">
+            <summary>
+            	Gets or sets the text for the error message.
+            </summary>
+        </member>
+        <member name="P:Dado.Validators.ZipCodeValidator.ValidationExpression">
+            <summary>
+            	Indicates the regular expression assigned to be the validation criteria.
+            </summary>
+        </member>
+    </members>
+</doc>
